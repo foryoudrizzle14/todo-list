@@ -7,12 +7,12 @@ function App() {
   const [todo, setTodo] = useState([
     {
       id: Date.now(),
-      title: 'Todo List',
+      title: '오늘 할일',
       contents: '리액트기초를 공부해봅시다.',
     },
     {
       id: Date.now() + 1,
-      title: 'Todo List2',
+      title: '오늘의 할일',
       contents: 'Todo list 구현하기',
     },
   ]);
@@ -28,6 +28,8 @@ function App() {
     };
     if (title === '' && contents === '') alert('내용을 추가하세요');
     else setTodo([...todo, newTodo]);
+    setTitle('');
+    setContents('');
   };
  
   // 할일삭제기능
@@ -49,6 +51,7 @@ function App() {
     };
     setDoneTodo([...doneTodo, newDoneTodo]);
     setTodo(todo.filter((t) => t.id !== dt.id));
+
   };
  
   // 완료취소기능
@@ -59,29 +62,31 @@ function App() {
       contents: t.contents,
     };
     setTodo([...todo, newTodo]);
-    setDoneTodo(doneTodo.filter((dt) => t.id !== dt.id));
+    setDoneTodo(doneTodo.filter((dt) => dt.id !== t.id));
   };
  
   return (
     <div className='Outer'>
+      <div>My todo list</div>
       <div className='InputArea'>
         제목
         <input
           className='Input'
           value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          onChange={(event) => setTitle(event.target.value)}
         ></input>
         할일내용
         <input
           className='Input'
           value={contents}
-          onChange={(e) => setContents(e.target.value)}
+          onChange={(event) => setContents(event.target.value)}
         ></input>
         <CustomBtn buttonColor='whitesmoke' onClick={addTodoHandler}>
           추가하기
         </CustomBtn>
       </div>
       <div className='Outer'>
+        <div className = 'cheerup'>오늘의 할일을 내일로 미루지 맙시다.🧡</div>
         <h2 className='title'>Working.. 🚀</h2>
         <div className='Scroll'>
           {todo.map((todo) => {
@@ -94,7 +99,7 @@ function App() {
                 firstHandler={deleteTodoHandler}
                 secondHandler={doneTodoHandler}
                 firstButton='삭제하기'
-                secondButton='완료하기'
+                secondButton='완료!!'
                 color='tanblue'
               />
             );
@@ -112,7 +117,7 @@ function App() {
                 firstHandler={deleteDoneTodoHandler}
                 secondHandler={doneCancelHandler}
                 firstButton='삭제하기'
-                secondButton='취소하기'
+                secondButton='취소!!'
                 color='orange'
               />
             );
