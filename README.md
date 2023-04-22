@@ -1,3 +1,16 @@
+
+components 파일에 만들어낸것
+App.js 파일에서 취소하기, 등록, 완료, 삭제 버튼 props 받아오기 => Todo.js
+CustomBtn.js 파일에서 커스텀한 버튼 가져오기 
+
+조언 받고 싶은 부분 
+1. 변수명을 지을 때 노하우/ 어떻게 하면 잘 만들어낼 수 있을까.
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
